@@ -6,7 +6,7 @@ import numpy as np
 import plotly.express as px
 
 st.set_page_config(layout="centered", page_title="Your Retirement Plan")
-st.header("Your Way to Retire with a Million")
+st.header("ETF Retirement Planner")
 
 # # Beispiel-Dictionary für Symbole und Namen (kann weggelassen oder angepasst werden)
 # my_dict = {"AAPL": "Apple", "MSFT": "Microsoft"}
@@ -183,6 +183,7 @@ st.line_chart(df2,
 
 min_save_rate = my_instance.get_saving_rate_for_target(expected_return, invest_timeframe, save_target, initial_invest)
 st.write(f"To reach your savings target of {save_target:,.0f} you need to save a :red[ minimum of {min_save_rate} {currency} per month] for {invest_timeframe} years :money_with_wings:")
+
 
 fig_data = {
     'Category': ['Personal Investment', 'Cap Gains'],
