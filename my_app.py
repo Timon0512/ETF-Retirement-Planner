@@ -171,7 +171,9 @@ with col9:
 
 df2 = df.rename(columns={"invest_cum": "Amount invested", "value": "Account Balance"})
 df2["year"] = df2["Date"].dt.year.astype(str)
+df2["Amount invested"] = df2["Amount invested"].iloc[0] + initial_invest
 df2 = df2.groupby("year").agg({"Account Balance": "last", "Amount invested": "last"}).reset_index()
+
 
 chart_colors = ["#50C878", "#B80F0A"]
 
