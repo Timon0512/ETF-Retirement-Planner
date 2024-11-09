@@ -83,11 +83,17 @@ with col2:
                   on_change=update_selectbox)
 
 my_instance = get_yf_data(ticker_symbol)
+
 info = my_instance.get_stock_info()
 
 if ticker_name == "Unknown":
     st.error("Symbol not found. Please select a valid Yahoo finance ticker symbol.")
     st.stop()
+
+elif my_instance.data.size == 0:
+    st.error("No data available for this Yahoo finance ticker symbol.")
+    st.stop()
+
 
 currency = info["currency"]
 
@@ -138,7 +144,7 @@ with col7:
 with col8:
 
     if is_custom_cagr:
-        custom_cagr = st.number_input("Custom CAGR", value=expected_return, min_value=0.0, max_value=1.0, step=0.01)
+        custom_cagr = st.number_input("Custom CAGR", value=expected_return, min_value=-1.0, max_value=1.0, step=0.01)
         expected_return = custom_cagr
     else:
         st.empty()
